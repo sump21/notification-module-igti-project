@@ -1,1 +1,1 @@
-# notification-module-igit-project
+# notification-module-igti-project
