@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'bundle install'
+        sh 'rvm list'
+        sh 'ruby -v'
       }
     }
   }
