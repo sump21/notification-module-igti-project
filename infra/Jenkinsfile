@@ -11,13 +11,19 @@ pipeline {
     stage('Security Checks, Code Analysis and Test') {
       parallel {
         stage('Security Checks') {
-          runSecurityChecks()
+          steps {
+            runSecurityChecks()
+          }
         }
         stage('Code Analysis') {
-          runCodeAnalysis()
+          steps {
+            runCodeAnalysis()
+          }
         }
         stage('Test') {
-          runTest()
+          steps {
+            runTest()
+          }
         }
       }
     }
