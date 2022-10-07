@@ -1,10 +1,30 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Setup') {
       steps {
         getRubyVersion()
         installPackages()
+        createDatabase()
+      }
+    }
+    stage('Security Checks, Code Analysis and Test') {
+      parallel {
+        stage('Security Checks') {
+          steps {
+            runSecurityChecks()
+          }
+        }
+        stage('Code Analysis') {
+          steps {
+            runCodeAnalysis()
+          }
+        }
+        stage('Test') {
+          steps {
+            runTest()
+          }
+        }
       }
     }
   }
@@ -17,4 +37,21 @@ def getRubyVersion() {
 def installPackages() {
   sh 'gem install bundler'
   sh 'bundle install --jobs 6'
+}
+
+def createDatabase() {
+  sh 'bundle exec rake db:setup'
+}
+
+def runSecurityChecks() {
+  sh 'bundle-audit update'
+  sh 'bundle-audit check'
+}
+
+def runCodeAnalysis() {
+  sh 'rubocop'
+}
+
+def runTest() {
+  sh 'rspec'
 }
