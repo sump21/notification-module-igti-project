@@ -6,6 +6,7 @@ ruby '3.1.2'
 gem 'bootsnap', require: false
 gem 'bundler-audit'
 gem 'dry-validation'
+gem 'interactor'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.4'

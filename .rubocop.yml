@@ -13,6 +13,10 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
+AllCops:
+  Exclude:
+    - 'db/*'
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -32,4 +36,10 @@ RSpec/AnyInstance:
   Enabled: false
 
 Rails/FilePath:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/BlockLength:
   Enabled: false
