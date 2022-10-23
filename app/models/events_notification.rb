@@ -1,0 +1,3 @@
+class EventsNotification < ApplicationRecord
+
+end
