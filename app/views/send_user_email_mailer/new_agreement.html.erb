@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+      .button {
+          background-color: #777;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+      }
+  </style>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Acordo <%= params['agreement_title'] %></h1>
+<p>
+  Acompanhe as novidades do acordo <%= params['agreement_title'] %> no botão abaixo:
+</p>
+<p>
+  <a href="#<%= params['link'] %>" class="button">Abrir acordo</a>
+</p>
+</body>
+</html>
