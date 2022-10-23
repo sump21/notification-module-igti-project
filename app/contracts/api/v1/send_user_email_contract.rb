@@ -6,13 +6,13 @@ class Api::V1::SendUserEmailContract < Dry::Validation::Contract
     required(:company_name).filled(:string)
     required(:event).filled(:string)
     required(:application).filled(:string)
-    required(:details).filled(:string)
+    optional(:quote_title).filled(:string)
+    optional(:agreement_title).filled(:string)
+    optional(:link).filled(:string)
   end
 
   rule(:email) do
-    unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
-      key.failure('has invalid format')
-    end
+    key.failure('has invalid format') unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
   end
 
   rule(:event) { key.failure('Event not exists') unless EventsNotification.exists?(event: value) }

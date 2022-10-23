@@ -22,7 +22,7 @@ RSpec.describe Api::V1::SendUserEmailContract do
     context 'when valid params' do
       let(:params) { valid_params }
 
-      it 'should success with params valid' do
+      it 'successes with params valid' do
         expect(validate_result.success?).to eq(true)
       end
     end
@@ -33,11 +33,11 @@ RSpec.describe Api::V1::SendUserEmailContract do
         valid_params
       end
 
-      it 'should return failure ' do
+      it 'returns failure' do
         expect(validate_result.success?).to eq(false)
       end
 
-      it 'should failed if email not valid' do
+      it 'failed if email not valid' do
         expect(validate_result.errors.to_h).to eq(email: ['has invalid format'])
       end
     end
