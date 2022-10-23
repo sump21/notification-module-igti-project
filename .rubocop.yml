@@ -27,3 +27,9 @@ Style/RedundantFetchBlock:
 
 Style/GlobalStdStream:
   Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
