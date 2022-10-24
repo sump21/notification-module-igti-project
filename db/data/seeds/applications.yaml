@@ -1,0 +1,4 @@
+applications:
+  - quote_application
+  - agreements_application
+  - login_application

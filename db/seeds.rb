@@ -1,7 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts 'Executing Seeds'
+def get_yaml(yaml)
+  puts "Finding file #{yaml}.yaml"
+
+  yaml_file = YAML.safe_load(
+    File.read(
+      File.join(
+        Rails.root.join("db/data/seeds/#{yaml}.yaml")
+      )
+    )
+  )
+  yaml_file[yaml]
+end
+
+puts 'Generating Applications'
+get_yaml('applications').each do |application|
+  Application.create(
+    name: application
+  ) unless Application.where(name: application).exists?
+  print '-'
+end
+
+puts 'Generating Events Notifications'
+get_yaml('events_notifications').each do |event|
+  EventsNotification.create(
+    event: event['event'],
+    action: event['action']
+  ) unless EventsNotification.where(
+    event: event['event'],
+    action: event['action']
+  ).exists?
+  print '-'
+end

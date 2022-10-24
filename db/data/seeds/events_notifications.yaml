@@ -1,0 +1,13 @@
+events_notifications:
+  - event: forgot_password
+    action: send_email
+  - event: new_access
+    action: send_email
+  - event: new_agreement
+    action: send_email
+  - event: agreement_update
+    action: send_email
+  - event: new_quote
+    action: send_email
+  - event: quote_update
+    action: send_email
