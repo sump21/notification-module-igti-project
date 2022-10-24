@@ -13,7 +13,7 @@ class SendUserEmail::CallOperation
 
   def find_template_by_event!
     case params[:event]
-    when 'quote_update'
+    when 'update_quote'
       logs(params[:application], params[:event])
       SendUserEmailMailer.with(params).quote_update.deliver_later
     when 'forgot_password'
@@ -22,8 +22,6 @@ class SendUserEmail::CallOperation
     when 'new_agreement'
       logs(params[:application], params[:event])
       SendUserEmailMailer.with(params).new_agreement.deliver_later
-    else
-      context.fail!(errors: 'Not send email')
     end
   end
 
