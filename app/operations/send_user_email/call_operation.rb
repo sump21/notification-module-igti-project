@@ -25,9 +25,9 @@ class SendUserEmail::CallOperation
     end
   end
 
-  def logs(app_name, event)
-    application = Application.find_by_name(app_name)
-    event_notification = EventsNotification.find_by_event(event)
+  def logs(app_name, event_name)
+    application = Application.find_by(name: app_name)
+    event_notification = EventsNotification.find_by(event: event_name)
     log = LogsNotification.new
     log.application_id = application.id
     log.events_notification_id = event_notification.id

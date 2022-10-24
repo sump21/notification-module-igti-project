@@ -14,8 +14,11 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: disable
   Exclude:
-    - 'db/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -42,4 +45,13 @@ Style/GuardClause:
   Enabled: false
 
 Metrics/BlockLength:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
   Enabled: false
